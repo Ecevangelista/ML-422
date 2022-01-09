@@ -1,7 +1,6 @@
-# ML-422
 # Exploratory Data Analysis: Ames Housing Data
 
-Exploratory Data Analysis (EDA) was performed on the Ames Housing data set to explore and prepare data to predict housing prices for residential homes in Ames, Iowa.
+Exploratory Data Analysis (EDA) was performed on the Ames Housing train data set to explore and prepare data to predict housing prices for residential homes in Ames, Iowa.
 EDA includes:
 * Descriptive statistics and visualizations to help understand the marginal distribution of the dependent variable SalePrice
 * Investigation of missing data and outliers
@@ -18,6 +17,7 @@ Min: $34,900.00
 50%: $163,000.00  
 75%: $214,400.00  
 Max: $755,000.00  
+
 The boxplot below shows that there are several outliers on the upper end of the SalePrice distribution.  
 
 ![box_distribution_SalePrice](https://user-images.githubusercontent.com/49419673/148699771-8511519f-4cbb-42fc-b3d5-fb578d116240.png)
@@ -31,34 +31,34 @@ The Q-Q Plot helps assess and provide further confirmation of the normality of S
 Missing Data   
 The chart below shows variables with NA in the dataset. Several of them are due to houses not having certain features like basements, garages, fireplaces, or pools vs. data that is actually missing or mis-coded. The only instance of actual missing information is in the Electrical variable, where ID 1380 has Nan when its Utilities field lists AllPub. 
 
-NA Values  
-Lot Frontage 259  
-Alley	1369   
-MsnVnrType 8    
-Msn VnrArea 8   
-BsmtQual 37   
-BsmtCond 37   
-BsmtExposure 38   
-BsmtFinType1 37   
-BsmtFinType2 38   
-Electrical 1    
-FireplaceQu 690   
-GarageType 81   
-GarageYrBlt 81    
-GarageFinish 81   
-GarageQual 81   
-GarageCond 81   
-PoolQc 1453   
-Fence 1179    
-MiscFeature 1406    
+NA Values   
+Lot Frontage: 259  
+Alley: 1369      
+MsnVnrType: 8    
+MsnVnrArea: 8   
+BsmtQual:  37   
+BsmtCond: 37   
+BsmtExposure: 38   
+BsmtFinType1: 37   
+BsmtFinType2: 38   
+Electrical: 1    
+FireplaceQu: 690   
+GarageType: 81   
+GarageYrBlt: 81    
+GarageFinish: 81   
+GarageQual: 81   
+GarageCond: 81   
+PoolQc: 1453   
+Fence: 1179    
+MiscFeature: 1406    
 
-Several variables should not be included for consideration when modeling due to the high number of NAs representing 40% or greater of the 1460 homes in the sample: Alley, Fireplace Qu, PoolQc, Fence, Misc Feature  
+Several variables should not be included for consideration when modeling due to the high number of NAs representing 40% or greater of the 1460 homes in the train sample: Alley, Fireplace Qu, PoolQc, Fence, Misc Feature  
 
 Outliers in SalePrice  
 There are 60 outliers in the higher range of SalePrice (prices >= $347,037.50) and of these, 11 are extreme outliers (prices >=$467,675).  
 
 #### Other considerations for preprocessing the dataset prior to building a model to predict SalePrice  
-None of the homes was removed from the dataset (n=1460) during the EDA described on this project, however, edits to the dataset could be performed to more accurately reflect a typical seller’s experience. When reviewing the variables, SaleCondition criteria could be used to eliminate rows. One could limit the dataset to only include sales with Normal, AdjLand, Alloca, and Partial conditions as these reflect more common market conditions for the home selling process. The conditions Abnorml and Family do not reflect the typical sale experience as Abnormal sales reflect prices where the seller is in distress (i.e. foreclosure, short sale) and Family sales do not put the home on the public market.  
+None of the homes was removed from the training dataset (n=1460) during the EDA described on this project, however, edits to the dataset could be performed to more accurately reflect a typical seller’s experience. When reviewing the variables, SaleCondition criteria could be used to eliminate homes. One could limit the dataset to only include sales with Normal, AdjLand, Alloca, and Partial conditions as these reflect more common market conditions for the home selling process. The conditions Abnorml and Family do not reflect the typical sale experience as Abnormal sales reflect prices where the seller is in distress (i.e. foreclosure, short sale) and Family sales do not put the home on the public market.  
 Total homes that would be removed due to sales with Abnormal or Family conditions: 121  
 
 #### Predictors of SalePrice  
@@ -88,9 +88,10 @@ A new feature TotalSqFtCalc (Total Square Feet Calculate) was created by adding 
 
 #### Min-max scaling and Standard scaling on dependent variable SalePrice  
 Min-Max Scaling and Standard Scaling were performed on SalePrice to mitigate issues with modeling since the range of SalePrice is wide ($720,100). The chart below shows the transformed minimum and maximum scale of SalePrice. The scale is wider with the Standard Scaler since the method doesn’t bind values to a specific range as compared to Min-Max which limits the scale from 0 to 1. Standard Scaling may be preferred for this model since it is less affected by outliers, and there are a small number of extreme outliers in SalePrice.  
-                  Min	  Max  
-Min Max Scaler	  0.00	1.00  
-Standard Scaler	  -1.84	7.23  
+|               |  Min | Max |
+|-------------- | ---- | --- |   
+| Min Max Scaler | 0.00 | 1.00 |    
+| Standard Scaler  | -1.84 | 7.23 |    
 
 
 
