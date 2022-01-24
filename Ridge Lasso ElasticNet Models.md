@@ -18,7 +18,7 @@ Plots on GrLivArea and OverallQual, revealed 2 outlier homes that had lower Sale
 #### Model Comparison and Evaluation
 
 Four models were created to evaluate different regression algorithms: Ridge Regression, Lasso Regression, Elastic Net, and Elastic Net with hyperparameters tuned.
-Additionally, the Lasso Regression and Elastic Net with tuned hyperparameters models also incorporated K-Fold cross validation to optimize the lowest RMSE score.
+Additionally, the Lasso Regression and Elastic Net with tuned hyperparameters models also incorporated K-Fold cross validation to optimize the lowest RMSE score. GridSearchCV yielded the optimal alpha at 0.001 and optimal L1 ratio at 0.2.
 
 ElasticNet with the hyperparameters tuned to alpha = 0.001 and L1_ratio = 0.2 produced the lowest RMSE at 21,638.7. In comparison, the ElasticNet model that used the default alpha and L1 ratio, produced the highest RMSE at 47,620.6. Model 4’s low alpha of 0.001 indicate that the penalty applied is close to approximating ordinary least squares regression and the model’s lower L1 ratio of 0.2 applies a penalty more in line with ridge regression.  
 
